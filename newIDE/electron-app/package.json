@@ -45,7 +45,6 @@
     "shelljs": "^0.7.7"
   },
   "dependencies": {
-    "electron-is": "^2.4.0",
-    "greenworks": "git+https://github.com/greenheartgames/greenworks.git"
+    "electron-is": "^2.4.0"
   }
 }
