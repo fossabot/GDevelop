@@ -63,6 +63,16 @@ class GD_CORE_API Project : public ObjectsContainer {
    * \brief Get project name
    */
   const gd::String& GetName() const { return name; }
+  
+  /**
+   * Change the Steam app ID for the steamworks API.
+   */
+  void SetSteamAppID(const gd::String& steamAppID_) { steamAppID = steamAppID_; };
+
+  /**
+   * Get the Steam App ID for the steamworks API.
+   */
+  const gd::String& GetSteamAppID() const { return steamAppID; }
 
   /**
    * \brief Change the version of the project.
@@ -916,6 +926,7 @@ class GD_CORE_API Project : public ObjectsContainer {
   void Init(const gd::Project& project);
 
   gd::String name;            ///< Game name
+  gd::String steamAppID;      ///< Steam app ID for Steam API
   gd::String version;         ///< Game version number (used for some exports)
   unsigned int windowWidth;   ///< Window default width
   unsigned int windowHeight;  ///< Window default height

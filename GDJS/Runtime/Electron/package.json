@@ -1,12 +1,19 @@
 {
-    "name": "GDJS_GAME_MANGLED_NAME",
-    "main": "main.js",
-    "productName": "GDJS_GAME_NAME",
-    "description": "GDJS_GAME_NAME",
-    "author": "GDJS_GAME_AUTHOR",
-    "version": "GDJS_GAME_VERSION",
-    "dependencies": {},
-    "devDependencies": {
-      "electron": "3.0.9"
-    }
+  "name": "GDJS_GAME_MANGLED_NAME",
+  "main": "main.js",
+  "productName": "GDJS_GAME_NAME",
+  "description": "GDJS_GAME_NAME",
+  "author": "GDJS_GAME_AUTHOR",
+  "version": "GDJS_GAME_VERSION",
+  "dependencies": {
+    "greenworks": "git+https://github.com/greenheartgames/greenworks.git"
+  },
+  "build": {
+    "files": [
+      "!node_modules/greenworks/deps/**/*"
+    ]
+  },
+  "devDependencies": {
+    "electron": "3.0.9"
   }
+}

@@ -437,6 +437,17 @@ bool ExporterHelper::ExportElectronFiles(const gd::Project &project,
 
   {
     gd::String str =
+        fs.ReadFile(gdjsRoot + "/Runtime/steam_appid.txt")
+            .FindAndReplace("APP_ID", project.GetSteamAppID());
+
+    if (!fs.WriteToFile(exportDir + "/steam_appid.txt", str)) {
+      lastError = "Unable to write Steam file.";
+      return false;
+    }
+  }
+
+  {
+    gd::String str =
         fs.ReadFile(gdjsRoot + "/Runtime/Electron/main.js")
             .FindAndReplace(
                 "800 /*GDJS_WINDOW_WIDTH*/",

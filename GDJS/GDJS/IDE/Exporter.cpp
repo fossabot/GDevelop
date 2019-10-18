@@ -69,9 +69,8 @@ bool Exporter::ExportWholePixiProject(
     bool exportForFacebookInstantGames =
         exportOptions["exportForFacebookInstantGames"];
 
-    // Always disable the splash for Facebook Instant Games
-    if (exportForFacebookInstantGames)
-      exportedProject.GetLoadingScreen().ShowGDevelopSplash(false);
+    // Always disable the splash
+    exportedProject.GetLoadingScreen().ShowGDevelopSplash(false);
 
     // Prepare the export directory
     fs.MkDir(exportDir);

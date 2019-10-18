@@ -8,18 +8,17 @@ REM If Gdevelop is already built, the script will simply launch it.
 REM ===============================================================
 echo This will clone, install, and launch GDevelop development version. Please make sure you have git and Node.js installed.
 
-SET fork=4ian
+SET fork=arthuro555
 SET project=GDevelop
 
-IF exist %project%/newIDE/electron-app/node_modules (
+IF exist ../newIDE/electron-app/node_modules (
 	echo /newIDE/electron-app/node_modules already exists. Skipping "npm install..."
-	cd %project%/newIDE/app
+	cd ../newIDE/app
 	GOTO runElectronApp
 )
 
 ELSE (
-	call git clone https://github.com/%fork%/%project%.git
-	cd %project%/newIDE/app
+	cd ../newIDE/app
 	call npm install
 	cd ../electron-app
 	call npm install

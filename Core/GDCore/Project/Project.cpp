@@ -47,6 +47,7 @@ Project::Project()
     :
 #if defined(GD_IDE_ONLY)
       name(_("Project")),
+	  steamAppID("480"),
       version("1.0.0"),
       packageName("com.example.gamename"),
       orientation("landscape"),
@@ -849,6 +850,7 @@ void Project::SerializeTo(SerializerElement& element) const {
 
   SerializerElement& propElement = element.AddChild("properties");
   propElement.AddChild("name").SetValue(GetName());
+  propElement.AddChild("steamAppID").SetValue(GetSteamAppID());
   propElement.SetAttribute("version", GetVersion());
   propElement.AddChild("author").SetValue(GetAuthor());
   propElement.AddChild("windowWidth").SetValue(GetMainWindowDefaultWidth());
@@ -1051,6 +1053,7 @@ Project& Project::operator=(const Project& other) {
 void Project::Init(const gd::Project& game) {
   // Some properties
   name = game.name;
+  steamAppID = game.steamAppID;
   version = game.version;
   windowWidth = game.windowWidth;
   windowHeight = game.windowHeight;

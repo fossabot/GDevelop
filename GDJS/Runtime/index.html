@@ -32,7 +32,6 @@
 
     <!-- GDJS_CUSTOM_HTML -->
 	<script>
-
     (function() {
         //Initialization
         gdjs.registerObjects();
@@ -49,6 +48,12 @@
 
         //Load all assets and start the game
         game.loadAllAssets(function() {
+			gdjs.steam = require('./greenworks');
+			if (gdjs.steam.initAPI()) {  
+			  console.log('Steam API has been initalized.');
+			} else {
+			  console.log('Error on initializing Steam API');
+			}
             game.startGameLoop();
         });
     })();

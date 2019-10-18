@@ -31,6 +31,7 @@ type State = {|
   windowDefaultWidth: number,
   windowDefaultHeight: number,
   name: string,
+  steamAppID: string,
   author: string,
   version: string,
   packageName: string,
@@ -57,6 +58,7 @@ class ProjectPropertiesDialog extends React.Component<Props, State> {
       windowDefaultWidth: project.getMainWindowDefaultWidth(),
       windowDefaultHeight: project.getMainWindowDefaultHeight(),
       name: project.getName(),
+	  steamAppID: project.getSteamAppID(),
       author: project.getAuthor(),
       version: project.getVersion(),
       packageName: project.getPackageName(),
@@ -87,6 +89,7 @@ class ProjectPropertiesDialog extends React.Component<Props, State> {
       windowDefaultWidth,
       windowDefaultHeight,
       name,
+	  steamAppID,
       author,
       version,
       packageName,
@@ -102,6 +105,7 @@ class ProjectPropertiesDialog extends React.Component<Props, State> {
     project.setDefaultWidth(windowDefaultWidth);
     project.setDefaultHeight(windowDefaultHeight);
     project.setName(name);
+	project.setSteamAppID(steamAppID);
     project.setAuthor(author);
     project.setVersion(version);
     project.setPackageName(packageName);
@@ -122,6 +126,7 @@ class ProjectPropertiesDialog extends React.Component<Props, State> {
   render() {
     const {
       name,
+	  steamAppID,
       windowDefaultWidth,
       windowDefaultHeight,
       author,
@@ -175,6 +180,13 @@ class ProjectPropertiesDialog extends React.Component<Props, State> {
             onChange={value => this.setState({ name: value })}
             autoFocus
           />
+		  <SemiControlledTextField
+			floatingLabelText={<Trans>Steam App ID</Trans>}
+			fullWidth
+            type="text"
+            value={steamAppID}
+            onChange={value => this.setState({ steamAppID: value })}
+		  />
           <SemiControlledTextField
             floatingLabelText={<Trans>Game's window width</Trans>}
             fullWidth

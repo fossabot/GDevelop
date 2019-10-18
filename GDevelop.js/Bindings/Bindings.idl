@@ -280,6 +280,8 @@ interface Project {
 
     void SetName([Const] DOMString name);
     [Const, Ref] DOMString GetName();
+	[Const, Ref] DOMString GetSteamAppID();
+    void SetSteamAppID([Const] DOMString steamAppID);
     void SetVersion([Const] DOMString authorName);
     [Const, Ref] DOMString GetVersion();
     void SetAuthor([Const] DOMString authorName);
