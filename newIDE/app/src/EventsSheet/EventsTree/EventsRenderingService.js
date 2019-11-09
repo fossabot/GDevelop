@@ -20,7 +20,7 @@ export default {
     'BuiltinCommonInstructions::While': WhileEvent,
     'BuiltinCommonInstructions::Link': LinkEvent,
     'BuiltinCommonInstructions::JsCode': JsCodeEvent,
-    'BuiltinCommonInstructions::JsCode': PythonCodeEvent,
+    'BuiltinCommonInstructions::PythonCode': PythonCodeEvent,
   },
   getEventComponent: function(event) {
     if (this.components.hasOwnProperty(event.getType()))
