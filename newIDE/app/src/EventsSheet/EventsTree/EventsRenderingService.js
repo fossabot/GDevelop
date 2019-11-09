@@ -7,6 +7,7 @@ import RepeatEvent from './Renderers/RepeatEvent';
 import WhileEvent from './Renderers/WhileEvent';
 import LinkEvent from './Renderers/LinkEvent';
 import JsCodeEvent from './Renderers/JsCodeEvent';
+import PythonCodeEvent from './Renderers/PythonCodeEvent';
 
 export default {
   components: {
@@ -19,6 +20,7 @@ export default {
     'BuiltinCommonInstructions::While': WhileEvent,
     'BuiltinCommonInstructions::Link': LinkEvent,
     'BuiltinCommonInstructions::JsCode': JsCodeEvent,
+    'BuiltinCommonInstructions::JsCode': PythonCodeEvent,
   },
   getEventComponent: function(event) {
     if (this.components.hasOwnProperty(event.getType()))
