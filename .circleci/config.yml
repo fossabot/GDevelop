@@ -1,5 +1,6 @@
 # CircleCI 2.0 configuration file to build GDevelop app running
 # on the Electron runtime (newIDE/electron-app).
+# dev build version
 
 version: 2
 jobs:
