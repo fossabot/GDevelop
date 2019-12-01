@@ -6,68 +6,94 @@
  * Functions are being passed the arguments that were declared in the extension.
  *
  * @memberof gdjs.evtTools
- * @class exampleJsExtension
+ * @class BetterDebugExtension
  * @static
  * @private
  */
-gdjs.evtTools.Extension = {};
+let oof = gdjs.Variable({});
 
-gdjs.evtTools.exampleJsExtension.myConditionFunction = function(number, text) {
-  return number <= 10 && text.length < 5;
+gdjs.evtTools.BetterDebugExtension = {};
+gdjs.evtTools.BetterDebugExtension.representation = [];
+gdjs.evtTools.BetterDebugExtension.representation.findFolder = function(folderName){
+  for (let o of this){
+    if (o.type === "folder"){
+      if (o.name === folderName){
+        return o
+      }
+    }
+  }
+};
+gdjs.evtTools.BetterDebugExtension.representation.findFolderIndex = function(folderName){
+  for (let i in this){
+    if (this[i].type === "folder"){
+      if (this[i].name === folderName){
+        return i
+      }
+    }
+  }
+};
+gdjs.evtTools.BetterDebugExtension.representation.findVar = function(varName){
+  for (let o of this){
+    if (o.type === "num" || o.type === "str"){
+      if (o.name === varName){
+        return o
+      }
+    }
+  }
+};
+gdjs.evtTools.BetterDebugExtension.folders = {};
+
+gdjs.evtTools.BetterDebugExtension.activate = function () {
+  gdjs.evtTools.BetterDebugExtension.gui = dat.GUI();
+  for (let o of gdjs.evtTools.BetterDebugExtension.representation){
+    if (o.type === "folder"){
+      for (let o of gdjs.evtTools.BetterDebugExtension.representation){
+        if (o.type === "str"){
+
+        } else if (o.type === "num"){
+
+        }
+      }
+    } else if (o.type === "str"){
+
+    } else if (o.type === "num"){
+
+    }
+  }
 };
 
-gdjs.evtTools.exampleJsExtension.getString = function() {
-  return "Hello World";
+gdjs.evtTools.BetterDebugExtension.addFolder=function(folderName){
+  gdjs.evtTools.BetterDebugExtension.representation.push({name:folderName, type: "folder", content: []})
 };
 
-/**
- * You can also attach an object to gdjs, that you can use to store more information
- * or objects - even if you should have doing so as global state can make things harder
- * to debug. Most of the time you can have all the logic in your functions, your gdjs.RuntimeBehavior
- * or your gdjs.RuntimeObject.
- */
-gdjs.exampleJsExtension = {
-  myGlobalString: "Hello World"
+gdjs.evtTools.BetterDebugExtension.addStrVariable=function(variableName, folder = false){
+  if(folder instanceof String){
+    try{
+      gdjs.evtTools.BetterDebugExtension.representation
+          [gdjs.evtTools.BetterDebugExtension.representation.findFolderIndex(folder)]
+          ["content"]
+          .push(
+              {name:variableName, type: "str", content: runtimeScene.getVariables().get(variableName)}
+          )
+    }catch (e) {
+      console.log("Undefined Folder: "+folder)
+    }
+  }
+  gdjs.evtTools.BetterDebugExtension.representation.push({name:variableName, type: "str", content: runtimeScene.getVariables().get(variableName)})
 };
 
-/**
- * In **rare cases** you may want to run code at the start of the scene. You can define a callback
- * that will be called at this moment. Name you callback gdjsCallbackRuntimeSceneLoaded.
- * GDJS will scan anything declared inside gdjs for these names.
- */
-gdjs.exampleJsExtension.gdjsCallbackRuntimeSceneLoaded = function(
-  runtimeScene
-) {
-  console.log("A gdjs.RuntimeScene was loaded:", runtimeScene);
+gdjs.evtTools.BetterDebugExtension.addNumberVariable=function(variableName, folder = false){
+  if(folder instanceof String){
+    try{
+      gdjs.evtTools.BetterDebugExtension.representation
+          [gdjs.evtTools.BetterDebugExtension.representation.findFolderIndex(folder)]
+          ["content"]
+          .push(
+              {name:variableName, type: "num", content: runtimeScene.getVariables().get(variableName)}
+          )
+    }catch (e) {
+      console.log("Undefined Folder: "+folder)
+    }
+  }
+  gdjs.evtTools.BetterDebugExtension.representation.push({name:variableName, type: "num", content: runtimeScene.getVariables().get(variableName)})
 };
-
-/**
- * In **rare cases** you may want to run code at the end of a scene. You can define a callback
- * that will be called at this moment. Name you callback gdjsCallbackRuntimeSceneLoaded.
- * GDJS will scan anything declared inside gdjs for these names.
- */
-gdjs.exampleJsExtension.callbacksRuntimeSceneUnloaded = function(runtimeScene) {
-  console.log("A gdjs.RuntimeScene was unloaded:", runtimeScene);
-};
-
-/**
- * In **very rare cases** you may want to run code whenever an object is deleted.
- * You can create a callback named "callbacksObjectDeletedFromScene" on your extension object.
- * GDJS will scan anything declared inside gdjs for this name.
- */
-gdjs.exampleJsExtension.callbacksObjectDeletedFromScene = function(
-  runtimeScene,
-  runtimeObject
-) {
-  console.log(
-    "A gdjs.RuntimeObject was deleted from a gdjs.RuntimeScene:",
-    runtimeScene,
-    runtimeObject
-  );
-};
-
-// Finally, note that you can also simply run code here. Most of the time you shouldn't need it though.
-console.log(
-  "gdjs.exampleJsExtension was created, with myGlobalString containing:" +
-    gdjs.exampleJsExtension.myGlobalString
-);
