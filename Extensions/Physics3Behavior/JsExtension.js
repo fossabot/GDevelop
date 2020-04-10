@@ -398,7 +398,7 @@ module.exports = {
           sharedData
         )
         .setIncludeFile('Extensions/Physics3Behavior/physics3runtimebehavior.js')
-        .addIncludeFile('Extensions/Physics3Behavior/box2d.wasm.js');
+        .addIncludeFile('Extensions/Physics3Behavior/Box2D.js');
   
       // Global
       aut
