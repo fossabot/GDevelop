@@ -386,15 +386,15 @@ module.exports = {
         // extension
         .addBehavior(
           'Physics3Behavior',
-          _('Physics Engine 2.0'),
-          'Physics2',
+          _('Physics Engine 3.0'),
+          'Physics3',
           _(
             'Simulate realistic object physics, with gravity, forces, joints, etc.'
           ),
           '',
           'res/physics32.png',
           'Physics3Behavior',
-          physics2Behavior,
+          physics3Behavior,
           sharedData
         )
         .setIncludeFile('Extensions/Physics3Behavior/physics3runtimebehavior.js')
@@ -508,7 +508,7 @@ module.exports = {
         .addParameter('expression', _('Value'))
         .getCodeExtraInformation()
         .setIncludeFile('Extensions/Physics3Behavior/physics3tools.js')
-        .setFunctionName('gdjs.physics2.setTimeScale');
+        .setFunctionName('gdjs.physics3.setTimeScale');
   
       aut
         .addExpression(
