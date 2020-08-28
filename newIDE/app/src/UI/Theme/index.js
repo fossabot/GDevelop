@@ -5,6 +5,8 @@ import NordTheme from './NordTheme';
 import SolarizedDarkTheme from './SolarizedDarkTheme';
 import { type Theme } from './DefaultTheme';
 import './Global.css';
+import optionalRequire from '../../Utils/OptionalRequire';
+const electron = optionalRequire("electron");
 
 // To add a new theme:
 // * copy the folder of an existing one (DarkTheme for example),
@@ -18,6 +20,6 @@ export const themes = {
 };
 
 export const getTheme = (themeName: string): Theme =>
-  themes[themeName] || themes['GDevelop default'];
+  themes[themeName] || electron ? electron.nativeTheme.shouldUseDarkColors ? themes['Dark'] : themes['GDevelop default'] : themes['GDevelop default'];
 
 export type GDevelopTheme = $PropertyType<Theme, 'gdevelopTheme'>;
