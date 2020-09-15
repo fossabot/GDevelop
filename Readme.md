@@ -1,4 +1,5 @@
 ![GDevelop logo](https://raw.githubusercontent.com/4ian/GDevelop/master/Core/docs/images/gdlogo.png "GDevelop logo")
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Farthuro555%2FGDevelop.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Farthuro555%2FGDevelop?ref=badge_shield)
 
 GDevelop is a full-featured, open-source game development software, allowing to create HTML5 and native games without any knowledge in a specific programming language. All the game logic is built up using an intuitive and powerful event-based system.
 
@@ -70,3 +71,7 @@ Games exported with GDevelop are based on the native and/or HTML5 game engines (
 [Node.js]:https://nodejs.org
 [CMake]:http://www.cmake.org/
 [Ninja]:http://martine.github.io/ninja/
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Farthuro555%2FGDevelop.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Farthuro555%2FGDevelop?ref=badge_large)
